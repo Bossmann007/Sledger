@@ -3,11 +3,14 @@
 ## Knowledge (disciplina)
 
 - [Plano de Ensino — PCO137A](../../Plano-de-Ensino.md) — RAs, cronograma, Parte I–III
+- HEUSER, Carlos Alberto. *Projeto de banco de dados*. 6. ed. Porto Alegre: Bookman, 2011 — modelo conceitual, (mín,máx), especialização. Fonte da notação desta lição.
+- [diagrams.net (Draw.io)](https://app.diagrams.net) — ferramenta da print do ER (`docs/er/sledger-conceitual.drawio`)
 - [Feedback proposta dia 3](../feedbackprofessor.md) — herança, snapshot, escopo
 - [Resumo Aula 1 — Modelos](../../_resumos_auto/Resumo%20—%20BD%20Aula%201%20(Introdução%20e%20Modelos).md)
 - [Tutorial minimundo](../../_resumos_auto/BD%20—%20BD___Tutorial_texto_descritivo_para_modelagem.txt)
 - [Documentação MySQL / Workbench](../../Slides/DocumentacaoMySQL.md)
 - [ADRs deste repo](docs/adr/README.md) — decisões de modelagem
+- [Mapa ER](reference/er-conceitual.html) — 13 entidades + tabela Heuser
 
 ## Knowledge (cripto / regulatório)
 

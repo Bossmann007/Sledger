@@ -60,5 +60,6 @@ Conta ledger ← Lançamento ← Transação contábil (Σ = 0)
 ## Current work
 
 - **Prazo Parte I:** ~03/09/2026 (RA1: conceitual, lógico, físico, DDL)
-- **Próximo:** minimundo → ER → modelo lógico → DDL MySQL
+- **Agora:** Draw.io conceitual (`docs/er/sledger-conceitual.drawio`) → PNG + justificativas em `docs/02`
+- **Em paralelo:** minimundo em `docs/01-minimundo.md`
 - Live task state: `.cursor/state/checkpoint.json`

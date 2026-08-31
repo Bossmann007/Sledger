@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Referência — ER conceitual Sledger</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/er.css">
+</head>
+<body class="er-print">
+  <div class="er-wrap">
+    <p class="meta no-print">Referência · print A3 paisagem · lição <a href="../lessons/0003-diagrama-er-conceitual.html">0003</a> · Draw.io em <a href="../docs/er/sledger-conceitual.drawio">docs/er/</a></p>
+
+    <h1>Sledger — modelo conceitual (ER)</h1>
+    <p>13 entidades no eixo Parte I. PK sublinhada. Sem FK nas caixas (Heuser). Sem saldo em Conta (ADR 0001). Especialização total e exclusiva.</p>
+
+    <p class="legend-row">
+      <span><i class="swatch" style="background:#f5f9fc;border-color:#1e4d6b"></i>Cadastro</span>
+      <span><i class="swatch" style="background:#f4faf6;border-color:#2d6a4f"></i>Ledger</span>
+      <span><i class="swatch" style="background:#fdf8f1;border-color:#8b4513"></i>On-chain</span>
+      <span><i class="swatch" style="background:#f7f3fa;border-color:#5c3d6b"></i>Prova</span>
+    </p>
+
+    <div class="er-canvas">
+      <section class="cluster cadastro">
+        <h2>Cadastro</h2>
+        <article class="entity">
+          <header>REDE BLOCKCHAIN</header>
+          <ul>
+            <li><span class="pk">id_rede</span> (PK)</li>
+            <li>nome</li>
+            <li>protocolo</li>
+            <li>confirmacoes_padrao</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>ATIVO</header>
+          <ul>
+            <li><span class="pk">id_ativo</span> (PK)</li>
+            <li>simbolo</li>
+            <li>nome</li>
+            <li>casas_decimais</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>CLIENTE</header>
+          <ul>
+            <li><span class="pk">id_cliente</span> (PK)</li>
+            <li>documento (UK)</li>
+            <li>nome</li>
+            <li>email</li>
+            <li>status</li>
+            <li>cadastrado_em</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>CONTA LEDGER</header>
+          <ul>
+            <li><span class="pk">id_conta</span> (PK)</li>
+            <li>tipo (CLIENTE | HOT | COLD)</li>
+            <li>status</li>
+            <li class="note">sem saldo — derivado</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>ENDEREÇO CARTEIRA</header>
+          <ul>
+            <li><span class="pk">id_endereco</span> (PK)</li>
+            <li>endereco (UK)</li>
+            <li>tipo (HOT | COLD | DEPÓSITO)</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="cluster ledger">
+        <h2>Ledger</h2>
+        <article class="entity">
+          <header>TRANSAÇÃO CONTÁBIL</header>
+          <ul>
+            <li><span class="pk">id_transacao</span> (PK)</li>
+            <li>ocorrida_em</li>
+            <li>descricao</li>
+            <li>status</li>
+            <li class="note">Σ lançamentos = 0</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>LANÇAMENTO</header>
+          <ul>
+            <li><span class="pk">id_lancamento</span> (PK)</li>
+            <li>tipo (DÉBITO | CRÉDITO)</li>
+            <li>valor</li>
+            <li class="note">mín. 2 por transação</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="cluster onchain">
+        <h2>On-chain</h2>
+        <article class="entity">
+          <header>MOVIMENTAÇÃO <small>(supertipo)</small></header>
+          <ul>
+            <li><span class="pk">id_movimentacao</span> (PK)</li>
+            <li>valor</li>
+            <li>solicitada_em</li>
+            <li>status</li>
+          </ul>
+        </article>
+        <p class="isa">▼ <strong>total / exclusiva</strong> ▼</p>
+        <article class="entity">
+          <header>DEPÓSITO</header>
+          <ul>
+            <li>tx_hash_rede</li>
+            <li>confirmacoes_minimas</li>
+            <li>confirmacoes_atuais</li>
+            <li>endereco_origem</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>SAQUE</header>
+          <ul>
+            <li>endereco_destino</li>
+            <li>status_aprovacao</li>
+            <li>aprovado_em</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>RESERVA SALDO</header>
+          <ul>
+            <li><span class="pk">id_reserva</span> (PK)</li>
+            <li>valor</li>
+            <li>criada_em</li>
+            <li>liberada_em (NULL = ativa)</li>
+            <li>motivo_liberacao</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="cluster prova">
+        <h2>Prova de reservas</h2>
+        <article class="entity">
+          <header>SNAPSHOT RESERVA</header>
+          <ul>
+            <li><span class="pk">id_snapshot</span> (PK)</li>
+            <li>capturado_em</li>
+            <li>total_devido_clientes</li>
+            <li>total_on_chain</li>
+            <li>merkle_root</li>
+            <li>status</li>
+          </ul>
+        </article>
+        <article class="entity">
+          <header>FOLHA DE PROVA</header>
+          <ul>
+            <li><span class="pk">id_folha</span> (PK)</li>
+            <li>saldo_devido</li>
+            <li>hash_folha</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <h2>Relacionamentos (Heuser: mín, máx)</h2>
+    <table class="rel-table">
+      <thead>
+        <tr>
+          <th>Entidade A</th>
+          <th>(mín,máx)</th>
+          <th>Verbo</th>
+          <th>(mín,máx)</th>
+          <th>Entidade B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>RedeBlockchain</td><td>(0,n)</td><td>hospeda</td><td>(1,1)</td><td>Ativo</td></tr>
+        <tr><td>Ativo</td><td>(0,n)</td><td>denomina</td><td>(1,1)</td><td>Conta</td></tr>
+        <tr><td>Cliente</td><td>(0,n)</td><td>possui</td><td>(0,1)</td><td>Conta</td></tr>
+        <tr><td>Conta</td><td>(0,n)</td><td>recebe em</td><td>(1,1)</td><td>EnderecoCarteira</td></tr>
+        <tr><td>Transacao</td><td>(1,n) n≥2</td><td>contém</td><td>(1,1)</td><td>Lancamento</td></tr>
+        <tr><td>Conta</td><td>(0,n)</td><td>registra</td><td>(1,1)</td><td>Lancamento</td></tr>
+        <tr><td>Cliente</td><td>(0,n)</td><td>solicita</td><td>(1,1)</td><td>Movimentacao</td></tr>
+        <tr><td>Conta</td><td>(0,n)</td><td>é afetada por</td><td>(1,1)</td><td>Movimentacao</td></tr>
+        <tr><td>Movimentacao</td><td>(0,1)</td><td>gera</td><td>(0,1)</td><td>Transacao</td></tr>
+        <tr><td>Movimentacao</td><td>—</td><td>ISA</td><td>—</td><td>Deposito | Saque</td></tr>
+        <tr><td>Saque</td><td>(0,n)</td><td>reserva</td><td>(1,1)</td><td>ReservaSaldo</td></tr>
+        <tr><td>Conta</td><td>(0,n)</td><td>sofre</td><td>(1,1)</td><td>ReservaSaldo</td></tr>
+        <tr><td>SnapshotReserva</td><td>(1,n)</td><td>contém</td><td>(1,1)</td><td>FolhaProva</td></tr>
+        <tr><td>Cliente</td><td>(0,n)</td><td>comprova-se em</td><td>(1,1)</td><td>FolhaProva</td></tr>
+      </tbody>
+    </table>
+
+    <p><small>Heuser: o par (mín,máx) ao lado de A diz quantos B aquele A tem. Pé-de-galinha no Draw.io toca o lado N. Cliente–Conta (0,1) no lado da conta = hot/cold sem cliente. Movimentação gera Transação só se confirmada (ADR 0002). Reserva (0,n) no saque = histórico; no máximo uma ativa (<code>liberada_em IS NULL</code>).</small></p>
+
+    <nav class="lesson-nav no-print">
+      <a href="../lessons/0003-diagrama-er-conceitual.html">Lição 0003</a> ·
+      <a href="../docs/er/sledger-conceitual.drawio">Draw.io</a> ·
+      <a href="glossario-sledger.html">Glossário</a> ·
+      <a href="../CONTEXT.md">CONTEXT.md</a>
+    </nav>
+  </div>
+</body>
+</html>

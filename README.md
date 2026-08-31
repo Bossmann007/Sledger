@@ -10,8 +10,8 @@ Decisões fechadas: [`docs/adr/README.md`](docs/adr/README.md) · [`CONTEXT.md`]
 | `docs/` | **Entrega** — minimundo, ER, lógico |
 | `sql/` | **Entrega** — DDL MySQL |
 | `_referencia-agente/` | Exemplo alinhado aos ADRs — estudo only |
-| `lessons/` | Lições 0001–0002 |
-| `reference/` | Glossário HTML |
+| `lessons/` | Lições 0001–0003 |
+| `reference/` | Glossário + mapa ER |
 
 Referências cripto: [`../../referenciascripto/README.md`](../../referenciascripto/README.md)
 
@@ -31,7 +31,9 @@ Referências cripto: [`../../referenciascripto/README.md`](../../referenciascrip
 
 ## Próximo passo
 
-1. [`lessons/0002-minimundo-por-substantivos.html`](lessons/0002-minimundo-por-substantivos.html)  
-2. Escrever [`docs/01-minimundo.md`](docs/01-minimundo.md) — os dois, sem copiar referência  
+1. [`lessons/0003-diagrama-er-conceitual.html`](lessons/0003-diagrama-er-conceitual.html)
+2. Abrir [`docs/er/sledger-conceitual.drawio`](docs/er/sledger-conceitual.drawio) no [diagrams.net](https://app.diagrams.net) · exportar PNG 200%
+3. Completar justificativas em [`docs/02-modelo-conceitual.md`](docs/02-modelo-conceitual.md)
+4. Ainda falta escrever [`docs/01-minimundo.md`](docs/01-minimundo.md) — os dois, sem copiar referência  
 
 Commits GitHub: só integrantes — sem coautor de agente.

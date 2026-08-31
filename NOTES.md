@@ -42,4 +42,4 @@
 
 ## Próximo passo
 
-`docs/01-minimundo.md` — parágrafo 1 custodial (ADR 0004) + fluxo reserva/FALHA (ADR 0002/0003).
+Lição 0003 + Draw.io: exportar PNG 200% → `docs/er/sledger-conceitual.png`. Dupla preenche justificativas em `docs/02-modelo-conceitual.md`. Minimundo (`docs/01`) ainda é esqueleto — escrever em paralelo para a print e o texto baterem.
