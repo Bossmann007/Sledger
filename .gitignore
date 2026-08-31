@@ -12,8 +12,11 @@ Thumbs.db
 # Cursor local
 .cursor/
 
-# Exemplo gerado por IA — não publicar no GitHub
+# Material de apoio / IA — não publicar no GitHub
 _referencia-agente/
+
+# Backup Workbench
+*.mwb.bak
 
 .cursor/state/checkpoint.json
 .cursor/state/session.json

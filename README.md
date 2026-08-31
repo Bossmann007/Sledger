@@ -1,41 +1,37 @@
-# Sledger — workspace de aprendizado
+# Sledger — Arquitetura de Banco de Dados (PUCPR)
 
-**Vocês** constroem a entrega em `docs/` e `sql/`.  
-Decisões fechadas: [`docs/adr/README.md`](docs/adr/README.md) · [`CONTEXT.md`](CONTEXT.md)
+Sistema de custódia de criptomoedas com partida dobrada e prova de reservas — **Parte I** (PjBL).
 
-| Pasta | Função |
-|-------|--------|
-| `MISSION.md` | Meta e prazo Parte I (03/09) |
-| `docs/adr/` | ADRs 0001–0004 — fonte da verdade |
-| `docs/` | **Entrega** — minimundo, ER, lógico |
-| [`docs/00-declaracao-uso-ia.md`](docs/00-declaracao-uso-ia.md) | **Declaração IA** — Resolução PUCPR 274/2024 (incluir no PDF) |
-| `sql/` | **Entrega** — DDL MySQL |
-| `_referencia-agente/` | Exemplo alinhado aos ADRs — estudo only |
-| `lessons/` | Lições 0001–0003 |
-| `reference/` | Glossário + mapa ER |
-
-Referências cripto: [`../../referenciascripto/README.md`](../../referenciascripto/README.md)
-
-## Integrantes (preencher no PDF)
+## Integrantes
 
 | Nome | RA |
 |------|-----|
 | | |
 | | |
 
-## ADRs em 1 linha
+## Entrega (`docs/` + `sql/`)
 
-1. Saldo derivado — sem coluna  
-2. Lançamento só na confirmação on-chain  
-3. Tabela `reserva_saldo`  
-4. Custodial + Ian Coleman só endereços demo  
+| Arquivo | Conteúdo |
+|---------|----------|
+| [`docs/00-declaracao-uso-ia.md`](docs/00-declaracao-uso-ia.md) | Declaração PUCPR 274/2024 (incluir no PDF) |
+| [`docs/01-minimundo.md`](docs/01-minimundo.md) | Minimundo |
+| [`docs/02-modelo-conceitual.md`](docs/02-modelo-conceitual.md) | Modelo conceitual + print do ER |
+| [`docs/03-justificativas-tecnicas.md`](docs/03-justificativas-tecnicas.md) | Justificativas (PK, FK, normalização) |
+| [`docs/err/`](docs/err/) | Diagrama ER (Workbench `.mwb` + PDF) |
+| [`docs/adr/`](docs/adr/) | Decisões de modelagem (ADRs 0001–0004) |
+| [`sql/01-ddl.sql`](sql/01-ddl.sql) | DDL MySQL 8 |
 
-## Próximo passo
+## Como rodar o SQL
 
-1. [`lessons/0003-diagrama-er-conceitual.html`](lessons/0003-diagrama-er-conceitual.html)
-2. Abrir [`docs/er/sledger-conceitual.drawio`](docs/er/sledger-conceitual.drawio) no [diagrams.net](https://app.diagrams.net) · exportar PNG 200%
-3. Completar justificativas em [`docs/02-modelo-conceitual.md`](docs/02-modelo-conceitual.md)
-4. Ainda falta escrever [`docs/01-minimundo.md`](docs/01-minimundo.md) — os dois, sem copiar referência  
+```bash
+mysql -u root -p < sql/01-ddl.sql
+```
 
-Commits GitHub: só integrantes — sem coautor de agente.  
-**IA:** preencher [`docs/00-declaracao-uso-ia.md`](docs/00-declaracao-uso-ia.md) e anexar ao PDF da entrega.
+No MySQL Workbench: **File → Open SQL Script** → `sql/01-ddl.sql` → Execute.
+
+## Decisões principais
+
+1. Saldo derivado — sem coluna em `Conta`
+2. Lançamento contábil só após confirmação on-chain
+3. Reserva temporária em `ReservaSaldo`
+4. Modelo custodial; herança Movimentação → Depósito \| Saque

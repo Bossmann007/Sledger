@@ -1,15 +1,10 @@
 # Modelo Conceitual — Diagrama Entidade-Relacionamento
 
-Notação: Heuser — entidades em retângulos, relacionamentos nomeados, cardinalidade `(mín,máx)`, PK sublinhada. **Sem FK nas caixas** (FK entra no modelo lógico). Ferramenta: Draw.io ([`er/sledger-conceitual.drawio`](er/sledger-conceitual.drawio)).
-
-> Lição: [`../lessons/0003-diagrama-er-conceitual.html`](../lessons/0003-diagrama-er-conceitual.html)  
-> Mapa: [`../reference/er-conceitual.html`](../reference/er-conceitual.html)
+Notação: Heuser — entidades em retângulos, relacionamentos nomeados, cardinalidade `(mín,máx)`, PK sublinhada. **Sem FK nas caixas** (FK entra no modelo lógico). Ferramenta: MySQL Workbench ([`err/ERR-MYSQLWORKBENCH.mwb`](err/ERR-MYSQLWORKBENCH.mwb)).
 
 ## Print
 
-Exporte do Draw.io: **File → Export as → PNG**, zoom **200%**, fundo branco. Salve em `docs/er/sledger-conceitual.png` e referencie abaixo. O restante deste Markdown deve continuar **texto selecionável** no PDF (feedback do professor).
-
-![Modelo conceitual Sledger](er/sledger-conceitual.png)
+Diagrama exportado do Workbench: [`err/ERR-PDF.pdf`](err/ERR-PDF.pdf). O restante deste Markdown deve continuar **texto selecionável** no PDF (feedback do professor).
 
 ## Inventário (13 entidades — eixo Parte I)
 

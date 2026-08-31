@@ -76,6 +76,5 @@ Curitiba, ___ de _______________ de 2026.
 
 ## Links úteis
 
-- Lição de autoria do projeto: [`lessons/0001-autoria-o-que-e-seu.html`](../lessons/0001-autoria-o-que-e-seu.html)
 - Diretrizes PUCPR (274/2024): [documento CONSUN](https://pt.scribd.com/document/904971313/Consun-Diretrizes-Para-Uso-Da-Ia-Na-Pucpr-Docx)
 - Código Humanitas PUCPR: [nuncaparedepensar.com.br](https://nuncaparedepensar.com.br)
