@@ -1,0 +1,23 @@
+# MySQL / IDE
+*.mwb.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Cursor local
+.cursor/
+
+# Exemplo gerado por IA — não publicar no GitHub
+_referencia-agente/
+
+.cursor/state/checkpoint.json
+.cursor/state/session.json
+.cursor/state/failures.jsonl
+.cursor/state/observability.jsonl
+.cursor/state/memories.jsonl
+

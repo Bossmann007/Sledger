@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Lição 0001 — Autoria: o que é seu?</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <p class="meta">Lição 0001 · ~12 min · <a href="../MISSION.md">Mission</a></p>
+
+  <h1>Autoria: o que é seu?</h1>
+
+  <p>Esta lição vem antes de qualquer diagrama ou SQL. Na PUCPR, o professor avalia se <strong>você</strong> entende o projeto — especialmente na prova de autoria. Material pronto de IA não substitui isso.</p>
+
+  <div class="callout callout-warn">
+    <strong>Regra deste repo:</strong> a pasta <code>_referencia-agente/</code> é só estudo. Sua entrega vive em <code>docs/</code> e <code>sql/</code>, escrita por você. Commits no GitHub: só sua assinatura, sem coautor de agente.
+  </div>
+
+  <h2>Três níveis de “ter o trabalho”</h2>
+
+  <ol>
+    <li><strong>Arquivo pronto</strong> — você tem um PDF/SQL, mas não explica um FK.</li>
+    <li><strong>Fluência ilusória</strong> — você leu tudo e acha que sabe, mas trava sem o texto aberto.</li>
+    <li><strong>Força de armazenamento</strong> — você reconstrói o minimundo, desenha o ER e defende cada escolha sem cola.</li>
+  </ol>
+
+  <p>O objetivo do Sledger é o nível 3. A Parte I (03/09) exige modelos conceitual, lógico e físico — o professor pode perguntar qualquer detalhe.<sup><a href="#ref1">1</a></sup></p>
+
+  <h2>Teste de autoria (faça agora, 2 minutos)</h2>
+
+  <p>Sem abrir nenhum arquivo, responda em voz alta:</p>
+  <ul>
+    <li>O que é “partida dobrada” no Sledger?</li>
+    <li>Por que Depósito e Saque não podem ser só uma tabela com muitos NULL?</li>
+    <li>Qual a diferença entre Snapshot de Reserva e Folha de Prova?</li>
+  </ul>
+
+  <p>Se travou em alguma: normal — é exatamente o que vamos construir nas próximas lições. Se respondeu tudo: ótimo, mas ainda reescreva o minimundo com suas palavras para provar.</p>
+
+  <h2>Quiz — retrieval practice</h2>
+
+  <form class="quiz" id="quiz1">
+    <fieldset>
+      <legend>1. Para a entrega acadêmica, o que pode ir no PDF final?</legend>
+      <label><input type="radio" name="q1" value="a"> Cópia de _referencia-agente/docs/</label>
+      <label><input type="radio" name="q1" value="b"> Texto que você reescreveu e defende</label>
+      <label><input type="radio" name="q1" value="c"> Export do chat da IA sem revisão</label>
+      <label><input type="radio" name="q1" value="d"> Diagrama bonito sem legenda sua</label>
+      <button type="button" onclick="checkQuiz()">Verificar</button>
+      <div class="feedback" id="fb1"></div>
+    </fieldset>
+  </form>
+
+  <form class="quiz" id="quiz2">
+    <fieldset>
+      <legend>2. Uso honesto de IA segundo o plano PUCPR:</legend>
+      <label><input type="radio" name="q2" value="a"> Esconder que usou IA</label>
+      <label><input type="radio" name="q2" value="b"> Declarar uso + revisar + assumir responsabilidade</label>
+      <label><input type="radio" name="q2" value="c"> IA escreve, você só assina</label>
+      <label><input type="radio" name="q2" value="d"> Proibir IA em qualquer forma</label>
+      <button type="button" onclick="checkQuiz2()">Verificar</button>
+      <div class="feedback" id="fb2"></div>
+    </fieldset>
+  </form>
+
+  <div class="task-box">
+    <h3>Sua tarefa antes da lição 0002</h3>
+    <ol>
+      <li>Crie <code>docs/01-minimundo.md</code> vazio com só o título.</li>
+      <li>Leia o <a href="../feedbackprofessor.md">feedback do professor</a> (5 min).</li>
+      <li>Anote em 3 bullets <em>suas</em> palavras o que ele pediu para mudar.</li>
+      <li>Commit <strong>só você</strong>: <code>git add docs/01-minimundo.md &amp;&amp; git commit -m "Inicio minimundo proprio"</code></li>
+    </ol>
+  </div>
+
+  <h2>Fonte primária</h2>
+  <p id="ref1">Feedback da proposta: <code>feedbackprofessor.md</code> na pasta <code>entregadia3</code>. Leia a seção sobre herança e Snapshot vs Folha de Prova.</p>
+
+  <div class="callout">
+    Dúvida? Pergunte no chat. Decisões fechadas: <a href="../docs/adr/README.md">ADRs 0001–0004</a>.
+  </div>
+
+  <nav class="lesson-nav">
+    Próxima: <a href="0002-minimundo-por-substantivos.html">Lição 0002</a> ·
+    <a href="../docs/adr/README.md">ADRs</a> ·
+    <a href="../reference/glossario-sledger.html">Glossário</a>
+  </nav>
+
+  <script>
+    function checkQuiz() {
+      const v = document.querySelector('input[name="q1"]:checked');
+      const fb = document.getElementById('fb1');
+      fb.classList.add('show');
+      if (v && v.value === 'b') {
+        fb.className = 'feedback show callout-ok';
+        fb.textContent = 'Correto. Autoria = você consegue explicar e reescrever.';
+      } else {
+        fb.className = 'feedback show callout-warn';
+        fb.textContent = 'Repense: entregar texto que você não produziu/revisou falha na autoria.';
+      }
+    }
+    function checkQuiz2() {
+      const v = document.querySelector('input[name="q2"]:checked');
+      const fb = document.getElementById('fb2');
+      fb.classList.add('show');
+      if (v && v.value === 'b') {
+        fb.className = 'feedback show callout-ok';
+        fb.textContent = 'Correto. Resolução 274/2024 + plano de ensino: declarar, revisar, responsabilizar-se.';
+      } else {
+        fb.className = 'feedback show callout-warn';
+        fb.textContent = 'Plano de ensino PCO137A pede declaração explícita quando IA for usada.';
+      }
+    }
+  </script>
+</body>
+</html>

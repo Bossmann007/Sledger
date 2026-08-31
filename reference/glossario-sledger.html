@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Glossário — Sledger / ER</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <p class="meta">Referência · sincronizado com <a href="../CONTEXT.md">CONTEXT.md</a> e ADRs 0001–0004</p>
+
+  <h1>Glossário Sledger</h1>
+
+  <dl>
+    <dt>Custodiante</dt>
+    <dd>Guarda ativos on-chain (hot/cold); registra direitos em contas ledger. Vê saldo — operação exige.</dd>
+
+    <dt>Chave privada / seed</dt>
+    <dd>Nunca no SGBD. Ian Coleman só para endereços demo nos INSERTs.</dd>
+
+    <dt>Conta ledger</dt>
+    <dd>Unidade contábil por ativo — cliente ou custodiante (hot/cold/reserva).</dd>
+
+    <dt>Transação contábil</dt>
+    <dd>Evento que agrupa lançamentos (soma zero). ≠ tx on-chain.</dd>
+
+    <dt>Tx on-chain</dt>
+    <dd>Transferência na blockchain; hash + estado (mempool, confirmada, falha).</dd>
+
+    <dt>Lançamento</dt>
+    <dd>Débito ou crédito em conta ledger. Imutável. Só após confirmação on-chain (movimentação).</dd>
+
+    <dt>Partida dobrada</dt>
+    <dd>≥2 lançamentos por transação contábil; soma algébrica zero.</dd>
+
+    <dt>Movimentação</dt>
+    <dd>Supertipo on-chain: Depósito ou Saque (herança total + exclusiva).</dd>
+
+    <dt>Depósito</dt>
+    <dd>Entrada; crédito ledger após confirmações na rede.</dd>
+
+    <dt>Saque</dt>
+    <dd>Saída; aprovação operacional; reserva até confirmar ou falhar.</dd>
+
+    <dt>Reserva de saldo</dt>
+    <dd>Tabela <code>reserva_saldo</code>. Temporária. <code>liberada_em</code> NULL = ativa.</dd>
+
+    <dt>Estorno contábil</dt>
+    <dd>Reverte lançamento já feito. Não usado se saque falha antes de confirmar.</dd>
+
+    <dt>Saldo disponível</dt>
+    <dd>Derivado: lançamentos − reservas ativas. Sem coluna saldo (ADR 0001).</dd>
+
+    <dt>Snapshot de reserva</dt>
+    <dd>Totais globais + Merkle root no instante T.</dd>
+
+    <dt>Folha de prova</dt>
+    <dd>Detalhe por cliente dentro do snapshot.</dd>
+
+    <dt>1FN / 2FN / 3FN</dt>
+    <dd>Atomicidade → PK → sem transitiva.</dd>
+  </dl>
+
+  <nav class="lesson-nav">
+    <a href="../docs/adr/README.md">ADRs</a> ·
+    <a href="../lessons/0002-minimundo-por-substantivos.html">Lição 0002</a> ·
+    <a href="../MISSION.md">Mission</a>
+  </nav>
+</body>
+</html>
