@@ -8,6 +8,7 @@ Decisões fechadas: [`docs/adr/README.md`](docs/adr/README.md) · [`CONTEXT.md`]
 | `MISSION.md` | Meta e prazo Parte I (03/09) |
 | `docs/adr/` | ADRs 0001–0004 — fonte da verdade |
 | `docs/` | **Entrega** — minimundo, ER, lógico |
+| [`docs/00-declaracao-uso-ia.md`](docs/00-declaracao-uso-ia.md) | **Declaração IA** — Resolução PUCPR 274/2024 (incluir no PDF) |
 | `sql/` | **Entrega** — DDL MySQL |
 | `_referencia-agente/` | Exemplo alinhado aos ADRs — estudo only |
 | `lessons/` | Lições 0001–0003 |
@@ -36,4 +37,5 @@ Referências cripto: [`../../referenciascripto/README.md`](../../referenciascrip
 3. Completar justificativas em [`docs/02-modelo-conceitual.md`](docs/02-modelo-conceitual.md)
 4. Ainda falta escrever [`docs/01-minimundo.md`](docs/01-minimundo.md) — os dois, sem copiar referência  
 
-Commits GitHub: só integrantes — sem coautor de agente.
+Commits GitHub: só integrantes — sem coautor de agente.  
+**IA:** preencher [`docs/00-declaracao-uso-ia.md`](docs/00-declaracao-uso-ia.md) e anexar ao PDF da entrega.
