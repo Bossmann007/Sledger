@@ -1,3 +1,12 @@
+<!-- ENZO-PORTFOLIO-BRAND -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:D97706&height=165&section=header&text=Sledger&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Double-entry%20digital-asset%20custody%20and%20proof-of-reserves%20project.&descAlignY=57&descSize=14" alt="Sledger" />
+</p>
+
+<p align="center"><strong>MySQL · Data Modeling · FinTech</strong></p>
+
+---
+
 # Sledger — Arquitetura de Banco de Dados (PUCPR)
 
 Sistema de custódia de criptomoedas com partida dobrada e prova de reservas — **Parte I** (PjBL).
@@ -35,3 +44,8 @@ No MySQL Workbench: **File → Open SQL Script** → `sql/01-ddl.sql` → Execut
 2. Lançamento contábil só após confirmação on-chain
 3. Reserva temporária em `ReservaSaldo`
 4. Modelo custodial; herança Movimentação → Depósito \| Saque
+
+<!-- ENZO-PORTFOLIO-BRAND-FOOTER -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:D97706&height=85&section=footer" alt="Footer" />
+</p>
