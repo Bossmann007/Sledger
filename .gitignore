@@ -24,3 +24,10 @@ _referencia-agente/
 .cursor/state/observability.jsonl
 .cursor/state/memories.jsonl
 
+
+# Parte 2: guia de estudo e solucoes em andamento ficam fora do repositorio publico
+parte2/GUIA-DE-ESTUDO.md
+parte2/04-consultas.sql
+parte2/05-alteracoes.sql
+parte2/06-consultas-professor.sql
+parte2/sqlentrega.sql

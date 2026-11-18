@@ -33,11 +33,38 @@ Fora da print (RA3): UsuarioSistema, RegistroAuditoria.
 | Total | Sim | |
 | Exclusiva | Sim | |
 
+Toda `Movimentacao` representa exatamente um evento de entrada ou saída: por isso a especialização é total. Ela é exclusiva porque o mesmo evento não pode ser simultaneamente depósito e saque. O supertipo concentra cliente, ativo, conta, valor, data e status; `Deposito` acrescenta hash e confirmações da rede, enquanto `Saque` acrescenta destino e aprovação. No modelo lógico, a regra é implementada pelo par `tipo_mov` e pelas tabelas de subtipo com PK igual à FK; a validação final entre o tipo e a existência do subtipo fica como regra de aplicação/trigger na evolução do projeto.
+
 ## Snapshot vs Folha de Prova
 
 Relação: **1 Snapshot : N Folhas**.
 
 Escrevam por que são duas entidades (não uma coluna “folha” dentro do snapshot) — o professor pediu essa justificativa:
+
+São duas entidades porque o snapshot é o cabeçalho de um evento de publicação e existe uma única vez por instante, enquanto cada folha é um detalhe repetido por cliente. Colocar folhas em uma coluna JSON perderia FK, dificultaria a consulta de um cliente específico e impediria a restrição `UNIQUE (id_snapshot, id_cliente)`. A separação mantém 1FN/3FN, permite verificar uma folha individual contra a Merkle root sem expor os demais saldos e conserva o histórico de snapshots.
+
+## Versão legível para exportação
+
+O diagrama abaixo é uma alternativa textual selecionável ao desenho fotografado. Deve ser renderizado/exportado no PDF final junto da imagem do Workbench, com as cardinalidades da tabela anterior.
+
+```mermaid
+erDiagram
+    RedeBlockchain ||--o{ Ativo : hospeda
+    Ativo ||--o{ Conta : denomina
+    Cliente o|--o{ Conta : possui
+    Conta ||--o{ EnderecoCarteira : recebe
+    Transacao ||--|{ Lancamento : contem
+    Conta ||--o{ Lancamento : registra
+    Cliente ||--o{ Movimentacao : solicita
+    Conta ||--o{ Movimentacao : afeta
+    Movimentacao o|--o| Transacao : gera
+    Movimentacao ||--o| Deposito : especializa
+    Movimentacao ||--o| Saque : especializa
+    Saque ||--o{ ReservaSaldo : cria
+    Conta ||--o{ ReservaSaldo : sofre
+    SnapshotReserva ||--|{ FolhaProva : contem
+    Cliente ||--o{ FolhaProva : comprova
+```
 
 ## Cardinalidades (Heuser)
 
@@ -58,4 +85,3 @@ O par (mín,máx) ao lado de A = quantos B aquele A tem. Pé-de-galinha no Draw.
 | Conta | (0,n) | sofre | (1,1) | ReservaSaldo |
 | SnapshotReserva | (1,n) | contém | (1,1) | FolhaProva |
 | Cliente | (0,n) | comprova-se em | (1,1) | FolhaProva |
-

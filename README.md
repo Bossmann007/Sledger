@@ -29,6 +29,7 @@ Sistema de custódia de criptomoedas com partida dobrada e prova de reservas —
 | [`docs/err/`](docs/err/) | Diagrama ER (Workbench `.mwb` + PDF) |
 | [`docs/adr/`](docs/adr/) | Decisões de modelagem (ADRs 0001–0004) |
 | [`sql/01-ddl.sql`](sql/01-ddl.sql) | DDL MySQL 8 |
+| [`sql/02-verificacao.sql`](sql/02-verificacao.sql) | Consultas de evidência: partida dobrada, saldo e prova de reservas |
 
 ## Como rodar o SQL
 
